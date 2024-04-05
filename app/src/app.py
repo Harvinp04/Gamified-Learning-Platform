@@ -19,7 +19,10 @@ def create_app(test_config=None):
     app = Flask(__name__)
 
     # Configure and initialize database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+   # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+    app = Flask(__name__)
+    # Set Ythe SQLALCHEMY_DATABASE_URI from an environment variable
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SQLALCHEMY_DATABASE_URI', 'sqlite:///site.db')  # Fallback to SQLite if not set
     app.config['PER_PAGE'] = 10
     app.secret_key = os.getenv('SECRET_KEY')
     app.register_blueprint(auth_blueprint)
