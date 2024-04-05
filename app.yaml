@@ -1,0 +1,4 @@
+runtime: python310
+entrypoint: gunicorn -b :$PORT app.run_app:app
+env_variables:
+  SQLALCHEMY_DATABASE_URI: 'mysql+mysqldb://gamified-primary:N+~/<8,;x5ej;b%J@/gamified?unix_socket=/cloudsql/lithe-camp-416820:us-east1:gamified-primary'
